@@ -32,8 +32,7 @@ Les 4 informations importantes contenues dans un certificat sont:
     1. L'autorité de certification
     2. Le nom de domaine de l'entité certifié (CN)
     3. La clé publique
-    4. 
-
+    4. Date de validité du certificat
 
 ## Question 4
 
@@ -46,12 +45,37 @@ Pour l’authentification du site de Alice, il faut:
     4. Vérifier qu'un des noms DNS correpsond au nom d'utilisateur saisi dans l'URL
     5. Le certificat est validé, il faut maintenant réaliser l'authentification du serveur en envoyant un challenge que le serveur va chiffer avec la clé privée associé à la clé publique.
 
-
 ## 4.1 Génération de clé rsa
 
 Pour la génération de la clé rsa, on utilise le commmande genrsa
 
-$ openssl genrsa -out rsa_keys.pem 512
+ $ openssl genrsa -out rsa_keys.pem 512
+
+## Question 5
+
+La longueur des nombres premiers est de 256 bits chacun
+La longueur du n est de 512 bits
+
+Le publicExponent est utilisé pour le chiffrement du message
+Le privateExponent est utilisé pour le déchiffrement du message chiffré
+
+Le publicExponent n'est pas difficile à deviner pour un pirate mais ca ne permet pas de compromettre la clé privée.
+
+## Question 6
+
+Chiffré une clé publique n'a pas d'interêt car elle à pour but d'être utilisé par tous les utilisateurs qui souhaite chiffré un message.
+
+Chiffré une clé privé est important car cette clé doit être protégé. Elle permet de déchiffrer tous les message chiffré avec la clé publique.
+
+## Question 7
+
+L'encodage Base64 est utilisé.
+Il a plusieurs avantage:
+    -  L’encodage Base64 garantit que la clé peut être transférée à travers des systèmes ou des protocoles qui ne supportent que les caractères ASCII, tels que les e-mails ou certains protocoles de réseau.
+    - Le format Base64 est plus lisible que les données binaires brutes, ce qui facilite certaines opérations de diagnostic, d’échange et de manipulation.
+
+
+
 
 
 
