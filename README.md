@@ -1,4 +1,5 @@
 # INFO001_DESBOS_GRIVA
+
 TP1 sécurité des applications
 
 Alexandre Desbos
@@ -7,7 +8,7 @@ Baptiste Griva
 ## Question 1
 
 Pour réaliser un couple de clé publique/privée RSA:
-    
+
     1. Choisir deux grand nombre premier p et q (1024 bits)
     2. calculer n = p x q et z = (p-1)x(q-1)
     3. Choisir un nombre e tel que e et z soient premiers entre eux (aucun facteur premier commun)
@@ -49,7 +50,7 @@ Pour l'authentification du site de Alice, il faut:
 
 Pour la génération de la clé rsa, on utilise le commmande genrsa
 
- $ openssl genrsa -out rsa_keys.pem 512
+$ openssl genrsa -out rsa_keys.pem 512
 
 ## Question 5
 
@@ -70,22 +71,17 @@ Chiffré une clé privé est important car cette clé doit être protégé. Elle
 ## Question 7
 
 L'encodage Base64 est utilisé.
-Il a plusieurs avantage:
-    -  L'encodage Base64 garantit que la clé peut être transférée à travers des systèmes ou des protocoles qui ne supportent que les caractères ASCII, tels que les e-mails ou certains protocoles de réseau.
-    - Le format Base64 est plus lisible que les données binaires brutes, ce qui facilite certaines opérations de diagnostic, d'échange et de manipulation.
-
+Il a plusieurs avantage: - L'encodage Base64 garantit que la clé peut être transférée à travers des systèmes ou des protocoles qui ne supportent que les caractères ASCII, tels que les e-mails ou certains protocoles de réseau. - Le format Base64 est plus lisible que les données binaires brutes, ce qui facilite certaines opérations de diagnostic, d'échange et de manipulation.
 
 ## Question 8
 
-On retrouve bien les éléments attendu dans pub.pem:
-    - Le modulus
-    - L'exposant public
+On retrouve bien les éléments attendu dans pub.pem: - Le modulus - L'exposant public
 
 Disposer d'un fichier à part contenant uniquement la clé publique améliore la sécurité de la clé privée, on peut la stocké ailleurs. C'est donc plus simple de partagé la clé public.
 
 ## Question 9
 
-Pour chiffrer un message RSA, il faut utiliser la clé publique du destinataire pour chiffrer le message. 
+Pour chiffrer un message RSA, il faut utiliser la clé publique du destinataire pour chiffrer le message.
 Cela garantit que seul le destinataire, qui possède la clé privée correspondante pourra déchiffrer le message.
 
 ## Question 10
@@ -93,10 +89,10 @@ Cela garantit que seul le destinataire, qui possède la clé privée corresponda
     $ openssl pkeyutl -encrypt -in clair.txt -pubin -inkey pub.griva.pem -out cypher.bin
 
     - encrypt : Spécifie que l'opération est un chiffrement.
-	- in clair.txt : Spécifie le fichier d'entrée contenant le message en clair que vous souhaitez chiffrer.
-	- pubin : Indique que le fichier clé fourni avec l'option -inkey est une clé publique.
+    - in clair.txt : Spécifie le fichier d'entrée contenant le message en clair que vous souhaitez chiffrer.
+    - pubin : Indique que le fichier clé fourni avec l'option -inkey est une clé publique.
     - inkey pub.pem : Spécifie le fichier contenant la clé publique à utiliser pour le chiffrement.
-	- out cipher.bin : Spécifie le fichier de sortie dans lequel le message chiffré sera enregistré.
+    - out cipher.bin : Spécifie le fichier de sortie dans lequel le message chiffré sera enregistré.
 
 ## Question 11
 
@@ -105,25 +101,22 @@ C'est normal car on ajoute un champ aléatoire devant les données à transmettr
 
 ## Question 12
 
-L'option -showcerts demande au client d'afficher l'ensemble des certificats renvoyés par le serveur lors de l'établissement d'une connexion SSL/TLS. 
+L'option -showcerts demande au client d'afficher l'ensemble des certificats renvoyés par le serveur lors de l'établissement d'une connexion SSL/TLS.
 Le certificat du serveur lui-même, et tous les certificats intermédiaires nécessaires pour établir la chaîne de confiance jusqu'à une autorité de certification.
 
-Le serveur à renvoyés 3 certificats:
-	1.	celui émis pour “*.univ-grenoble-alpes.fr”.
-	2.	Celui émis par “Sectigo RSA Organization Validation Secure Server CA”.
-	3.	Celui “USERTrust RSA Certification Authority”.
+Le serveur à renvoyés 3 certificats: 1. celui émis pour “\*.univ-grenoble-alpes.fr”. 2. Celui émis par “Sectigo RSA Organization Validation Secure Server CA”. 3. Celui “USERTrust RSA Certification Authority”.
 
 ## Question 13
 
 x509 est un format standard pour certificats de clé publique
 
-Le sujet : Subject: C = FR, ST = Auvergne-Rh\C3\B4ne-Alpes, O = Universit\C3\A9 Grenoble Alpes, CN = *.univ-grenoble-alpes.fr
+Le sujet : Subject: C = FR, ST = Auvergne-Rh\C3\B4ne-Alpes, O = Universit\C3\A9 Grenoble Alpes, CN = \*.univ-grenoble-alpes.fr
 
     - C (Country) : Indique le pays de l'organisation
-	- ST (State) : Indique l'état
-	- L (Locality Name) : Indique la localité / ville
-	- O (Organization Name) : Indique le nom de l'organisation
-	- CN (Common Name) : Le nom de domaine ou l'identité principale
+    - ST (State) : Indique l'état
+    - L (Locality Name) : Indique la localité / ville
+    - O (Organization Name) : Indique le nom de l'organisation
+    - CN (Common Name) : Le nom de domaine ou l'identité principale
 
 ## Question 14
 
@@ -133,8 +126,36 @@ Le champ i représente l'autorité qui a émis (signé) le certificat.
 ## Question 15
 
     1.	Le certificat contient la clé publique du serveur.
-	2.	Les algorithmes utilisés sont indiqués dans le certificat. Ici, c'est RSA SHA-256
-	3.	L'attribut CN contient le nom commun du certificat, dans ce cas, *.univ-grenoble-alpes.fr
-	4.	Les autre domaines sont dans alternatives names: DNS:*.univ-grenoble-alpes.fr, DNS:univ-grenoble-alpes.fr
-	5.	La période de validité est: 08 avril 2024 au 08 avril 2025
-	6.	Le lien .crl correspond à une liste de révocation de certificats, pour vérifier si un certificat a été révoqué par l'autorité de certification avant sa date d'expiration.
+    2.	Les algorithmes utilisés sont indiqués dans le certificat. Ici, c'est RSA SHA-256
+    3.	L'attribut CN contient le nom commun du certificat, dans ce cas, *.univ-grenoble-alpes.fr
+    4.	Les autre domaines sont dans alternatives names: DNS:*.univ-grenoble-alpes.fr, DNS:univ-grenoble-alpes.fr
+    5.	La période de validité est: 08 avril 2024 au 08 avril 2025
+    6.	Le lien .crl correspond à une liste de révocation de certificats, pour vérifier si un certificat a été révoqué par l'autorité de certification avant sa date d'expiration.
+
+## Question 16
+
+    1.  Le certificat est signé par Sectigo RSA Organization Validation Secure Server CA
+    2.  La formule de signature S = Ed(H(m)) mod n  avec :
+        - H(m) : la valeur de hachage du message m avec SHA-256
+        - Ed : L'opération de chiffrement avec la clé privée du signataire (le CA dans notre cas)
+        - n : le module utilisé dans RSA
+
+## Question 17
+
+    1.  le certificat de la CA qui a délivré le certificat de de www.univ-grenoble-alpes.fr a pour sujet :
+        - s:C = GB, ST = Greater Manchester, L = Salford, O = Sectigo Limited, CN = Sectigo RSA Organization Validation Secure Server CA
+    2.  Sa taille de clé publique est de 2048 (bit)
+    3.  Il a été signé par USERTrust RSA Certification Authority
+
+## Question 18
+
+    1.  Le certificat permettant de valider le certificat du dernier niveau est le certificat root :
+        - USERTrust RSA Certification Authority
+    2. Il se trouve dans le fichier des certificats de confiance de la machine :
+        - ici /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+
+## Question 19
+
+    1.  Les champs subject et issuer sont les mêmes, le certificat est auto-signé car c'est un certificat racine.
+    2.  La formule qui a permit de générer le certificat est : S = Ed(H(m)) mod n
+    3.  Ce type de certificat est appelé certificat auto-signé.
