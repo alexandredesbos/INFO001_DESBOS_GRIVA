@@ -132,3 +132,9 @@ Le champ i représente l'autorité qui a émis (signé) le certificat.
 
 ## Question 15
 
+    1.	Le certificat contient la clé publique du serveur.
+	2.	Les algorithmes utilisés sont indiqués dans le certificat. Ici, c'est RSA SHA-256
+	3.	L'attribut CN contient le nom commun du certificat, dans ce cas, *.univ-grenoble-alpes.fr
+	4.	Les autre domaines sont dans alternatives names: DNS:*.univ-grenoble-alpes.fr, DNS:univ-grenoble-alpes.fr
+	5.	La période de validité est: 08 avril 2024 au 08 avril 2025
+	6.	Le lien .crl correspond à une liste de révocation de certificats, pour vérifier si un certificat a été révoqué par l'autorité de certification avant sa date d'expiration.
