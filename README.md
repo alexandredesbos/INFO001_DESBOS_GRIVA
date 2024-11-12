@@ -114,3 +114,21 @@ Le serveur à renvoyés 3 certificats:
 	3.	Celui “USERTrust RSA Certification Authority”.
 
 ## Question 13
+
+x509 est un format standard pour certificats de clé publique
+
+Le sujet : Subject: C = FR, ST = Auvergne-Rh\C3\B4ne-Alpes, O = Universit\C3\A9 Grenoble Alpes, CN = *.univ-grenoble-alpes.fr
+
+    - C (Country) : Indique le pays de l'organisation
+	- ST (State) : Indique l'état
+	- L (Locality Name) : Indique la localité / ville
+	- O (Organization Name) : Indique le nom de l'organisation
+	- CN (Common Name) : Le nom de domaine ou l'identité principale
+
+## Question 14
+
+Le champ s est le sujet du certificat.
+Le champ i représente l'autorité qui a émis (signé) le certificat.
+
+## Question 15
+
