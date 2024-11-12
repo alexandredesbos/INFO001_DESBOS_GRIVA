@@ -32,7 +32,7 @@ Les 4 informations importantes contenues dans un certificat sont:
     1. L'autorité de certification
     2. Le nom de domaine de l'entité certifié (CN)
     3. La clé publique
-    4. Date de validité du certificat
+    4. La signature
 
 ## Question 4
 
@@ -87,3 +87,30 @@ Disposer d'un fichier à part contenant uniquement la clé publique améliore la
 
 Pour chiffrer un message RSA, il faut utiliser la clé publique du destinataire pour chiffrer le message. 
 Cela garantit que seul le destinataire, qui possède la clé privée correspondante pourra déchiffrer le message.
+
+## Question 10
+
+    $ openssl pkeyutl -encrypt -in clair.txt -pubin -inkey pub.griva.pem -out cypher.bin
+
+    - encrypt : Spécifie que l'opération est un chiffrement.
+	- in clair.txt : Spécifie le fichier d'entrée contenant le message en clair que vous souhaitez chiffrer.
+	- pubin : Indique que le fichier clé fourni avec l'option -inkey est une clé publique.
+    - inkey pub.pem : Spécifie le fichier contenant la clé publique à utiliser pour le chiffrement.
+	- out cipher.bin : Spécifie le fichier de sortie dans lequel le message chiffré sera enregistré.
+
+## Question 11
+
+En chiffrant plusieurs fois le même message, on voit que les résultats sont différent.
+C'est normal car on ajoute un champ aléatoire devant les données à transmettre avant de les chiffrer.
+
+## Question 12
+
+L'option -showcerts demande au client d'afficher l'ensemble des certificats renvoyés par le serveur lors de l'établissement d'une connexion SSL/TLS. 
+Le certificat du serveur lui-même, et tous les certificats intermédiaires nécessaires pour établir la chaîne de confiance jusqu'à une autorité de certification.
+
+Le serveur à renvoyés 3 certificats:
+	1.	celui émis pour “*.univ-grenoble-alpes.fr”.
+	2.	Celui émis par “Sectigo RSA Organization Validation Secure Server CA”.
+	3.	Celui “USERTrust RSA Certification Authority”.
+
+## Question 13
