@@ -36,14 +36,14 @@ Les 4 informations importantes contenues dans un certificat sont:
 
 ## Question 4
 
-Pour l’authentification du site de Alice, il faut:
+Pour l'authentification du site de Alice, il faut:
 
     1. Récupérer la clé publique de l'autorité de certification (ca1)
     2. Calculer : h1 = DKPUBca1(signature)
                   h2 = hash(infos-certif)
     3. Comparer h1 et h2
     4. Vérifier qu'un des noms DNS correpsond au nom d'utilisateur saisi dans l'URL
-    5. Le certificat est validé, il faut maintenant réaliser l'authentification du serveur en envoyant un challenge que le serveur va chiffer avec la clé privée associé à la clé publique.
+    5. Le certificat est validé, il faut maintenant réaliser l'authentification du serveur en envoyant un challenge que le serveur va chiffrer avec la clé privée associé à la clé publique.
 
 ## 4.1 Génération de clé rsa
 
@@ -71,11 +71,19 @@ Chiffré une clé privé est important car cette clé doit être protégé. Elle
 
 L'encodage Base64 est utilisé.
 Il a plusieurs avantage:
-    -  L’encodage Base64 garantit que la clé peut être transférée à travers des systèmes ou des protocoles qui ne supportent que les caractères ASCII, tels que les e-mails ou certains protocoles de réseau.
-    - Le format Base64 est plus lisible que les données binaires brutes, ce qui facilite certaines opérations de diagnostic, d’échange et de manipulation.
+    -  L'encodage Base64 garantit que la clé peut être transférée à travers des systèmes ou des protocoles qui ne supportent que les caractères ASCII, tels que les e-mails ou certains protocoles de réseau.
+    - Le format Base64 est plus lisible que les données binaires brutes, ce qui facilite certaines opérations de diagnostic, d'échange et de manipulation.
 
 
+## Question 8
 
+On retrouve bien les éléments attendu dans pub.pem:
+    - Le modulus
+    - L'exposant public
 
+Disposer d'un fichier à part contenant uniquement la clé publique améliore la sécurité de la clé privée, on peut la stocké ailleurs. C'est donc plus simple de partagé la clé public.
 
+## Question 9
 
+Pour chiffrer un message RSA, il faut utiliser la clé publique du destinataire pour chiffrer le message. 
+Cela garantit que seul le destinataire, qui possède la clé privée correspondante pourra déchiffrer le message.
