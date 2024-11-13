@@ -191,3 +191,5 @@ En indiquant aux machines clientes de faire confiance à Root Lorne, ca permet d
 On à pas besoin d’importer manuellement chaque certificat intermédiaire ou serveur.
 
 ## Question 25
+
+    127.0.0.1 www.desbos.fr
