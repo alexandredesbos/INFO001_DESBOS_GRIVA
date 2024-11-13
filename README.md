@@ -175,3 +175,19 @@ Cette autorité peut être utilisé pour:
 - On à mis la valeur /home/etudiant/ca dans le paramètre dir de CA_Default.
 - La clé privée de la CA doit être stockée dans le répertoire /home/etudiant/ca/private sous le nom ca.key.pem.
 - Le certificat de la CA doit être stocké dans le répertoire /home/camanager/ca/certs sous le nom ca.cert.pem.
+
+## Question 22
+
+    $ openssl genpkey -algorithm RSA -out private/intermediate.key.pem -aes128 -pass pass:griva -pkeyopt rsa_keygen_bits:3072
+
+## Question 23
+
+Lors de la génération d’une demande de signature de certificat, celle-ci est signée numériquement par la clé privée associée à la clé publique incluse dans la demande.
+Ca sert à prouver que le demandeur possède bien la clé privée correspondante à la clé publique fournie.
+
+## Question 24
+
+En indiquant aux machines clientes de faire confiance à Root Lorne, ca permet de valider automatiquement tous les certificats délivrés par cette autorité de certification et toutes ses autorités de certification intermédiaires, pour avoir une chaîne de confiance complète. 
+On à pas besoin d’importer manuellement chaque certificat intermédiaire ou serveur.
+
+## Question 25
