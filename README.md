@@ -157,7 +157,7 @@ Le champ i représente l'autorité qui a émis (signé) le certificat.
 ## Question 19
 
     1.  Les champs subject et issuer sont les mêmes, le certificat est auto-signé car c'est un certificat racine.
-    2.  La formule qui a permit de générer le certificat est : S = Ed(H(m)) mod n
+    2.  La formule qui a permit de générer le certificat est : S = E~KPRIV-CA~(H(m)) mod n
     3.  Ce type de certificat est appelé certificat auto-signé.
 
 ## Question 20
