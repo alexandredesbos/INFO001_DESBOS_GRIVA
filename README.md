@@ -135,7 +135,7 @@ Le champ i représente l'autorité qui a émis (signé) le certificat.
 ## Question 16
 
     1.  Le certificat est signé par Sectigo RSA Organization Validation Secure Server CA
-    2.  La formule de signature S = E<sub>KRPIV_CA</sub>(H(m)) avec :
+    2.  La formule de signature S = E <sub> KRPIV_CA </sub> (H(m)) avec :
         - H(m) : la valeur de hachage du message m avec SHA-256
         - Ed : L'opération de chiffrement avec la clé privée du signataire (le CA dans notre cas)
         - n : le module utilisé dans RSA
