@@ -159,3 +159,19 @@ Le champ i représente l'autorité qui a émis (signé) le certificat.
     1.  Les champs subject et issuer sont les mêmes, le certificat est auto-signé car c'est un certificat racine.
     2.  La formule qui a permit de générer le certificat est : S = Ed(H(m)) mod n
     3.  Ce type de certificat est appelé certificat auto-signé.
+
+## Question 20
+
+La taille de la clé est de 4096 bits -> Public-Key: (4096 bit)
+On voit que le subjet et le issuer sont identiques, ceux qui permet de savoir qu'il s'agit bien d'un certificat racine auto-signé.
+    C = FR, ST = Savoie, L = Chambéry, O = TP Sécurité, CN = Root Lorne
+Cette autorité peut être utilisé pour:
+    - Digital Signature
+    - Certificate Sign
+    - CRL Sign
+
+## Question 21
+
+- On à mis la valeur /home/etudiant/ca dans le paramètre dir de CA_Default.
+- La clé privée de la CA doit être stockée dans le répertoire /home/etudiant/ca/private sous le nom ca.key.pem.
+- Le certificat de la CA doit être stocké dans le répertoire /home/camanager/ca/certs sous le nom ca.cert.pem.
